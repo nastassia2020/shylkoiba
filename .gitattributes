@@ -1,0 +1,4 @@
+*.mp3 filter=lfs diff=lfs merge=lfs -text
+*.avi filter=lfs diff=lfs merge=lfs -text
+Beyonce[[:space:]]-[[:space:]]Diva.avi filter=lfs diff=lfs merge=lfs -text
+Stephan_Bodzin_-_Live_Piz_Gloria_for_Cercle_(iPleer.com).mp3 filter=lfs diff=lfs merge=lfs -text

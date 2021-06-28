@@ -1,0 +1,5 @@
+{
+    "port": 5000,
+    "jwtSecret": "nastassechka",
+    "mongoUri": "mongodb+srv://nastassiashy:12345qwas@cluster0.mefti.mongodb.net/myapp?retryWrites=true&w=majority"
+}

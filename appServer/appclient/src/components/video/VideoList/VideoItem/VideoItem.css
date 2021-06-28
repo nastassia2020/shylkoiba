@@ -1,0 +1,10 @@
+.VideoItem{
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.VideoItem p:hover{
+    cursor: pointer;
+    color: rgb(245, 209, 250);
+}

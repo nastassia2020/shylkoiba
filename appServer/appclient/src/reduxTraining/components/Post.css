@@ -1,0 +1,32 @@
+.card{
+    width: 100%;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-top: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+.card-body{
+    display: flex;
+    justify-content: center;
+}
+
+.primary{
+    width: 100px;
+    height: 30px;
+    background: coral;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.success{
+    width: 100px;
+    height: 30px;
+    background: rgb(5, 192, 5);
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
