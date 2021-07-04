@@ -8,7 +8,7 @@ import SongItem from './components/Songs/SongsList/SongItem/SongItem';
 import OwnList from './components/OwnList/OwnList';
 import Auth from './containers/Auth/AuthNode';
 // import {connect} from 'react-redux';
-import Logout from './components/logout/Logout';
+// import Logout from './components/logout/Logout';
 import {useAuth} from './hooks/auth.hook';
 import { AuthContext } from './context/AuthContext';
 
@@ -28,7 +28,7 @@ function App ()  {
               <Route path='/musicBox/' component={SongItem}/>
               <Route path='/videoBox/:id' component={VideoBox}/>
               <Route path='/ownList' component={OwnList}/>
-              <Route path='/logout' component={Logout}/>
+              {/* <Route path='/logout' component={Logout}/> */}
               <Redirect to={'/'}/>
             </Switch>
           </BrowserRouter>
@@ -50,7 +50,7 @@ function App ()  {
               <Redirect to={'/'}/>
             </Switch>
           </BrowserRouter>
-      </Layout>
+        </Layout>
       </AuthContext.Provider>
       )
   }
