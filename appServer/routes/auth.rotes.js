@@ -5,6 +5,8 @@ const {check, validationResult} = require('express-validator')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const router = Router()
+const FileService = require('../services/fileService')
+const File = require('../models/OwnList')
 
 router.post(
     '/register',
@@ -31,12 +33,14 @@ router.post(
            return res.status(400).json({message: 'Such user already exists!'})
         }
 
-        const hashedPassword = await bcrypt.hash(password, 12)
+        const hashedPassword = await bcrypt.hash(password, 8)
         const user = new User({email, password: hashedPassword})
 
         await user.save()
 
-        res.status(201).json({message: 'User was created'})
+        res.json({message: 'User was created'})
+
+        await FileService.createDir(new File({user: user.id, name: ''}))
 
     } catch (e) {
         res.status(500).json({message: 'Something went wrong!'})

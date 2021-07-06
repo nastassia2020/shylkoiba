@@ -16,19 +16,19 @@ function NavigationItems () {
     if(auth.isAuthenticated){
         return(
             <React.Fragment>
-                <ul className='NavigationItems'>
+                <ul className='NavigationItems' style={{background: 'white'}}>
                     <NavigationItem link='/'>MUSIC</NavigationItem>
                     <NavigationItem link='/videoBox'>VIDEO</NavigationItem>
                     <NavigationItem link='/ownList'>MY COLLECTION</NavigationItem>
                     {/* <NavigationItem link='/logout'>LOG OUT</NavigationItem> */}
-                    <li><a href='/' onClick={logoutHandler}>LOGOUT</a></li>
+                    <li><a href='/' onClick={logoutHandler} style={{color: 'black'}}>LOGOUT</a></li>
                 </ul>
             </React.Fragment>
         )
     } else {
         return(
             <React.Fragment>
-                <ul className='NavigationItems'>
+                <ul className='NavigationItems' style={{background: 'white'}}>
                     <NavigationItem link='/'>MUSIC</NavigationItem>
                     <NavigationItem link='/videoBox'>VIDEO</NavigationItem>
                     <NavigationItem link='/auth'>LOG IN</NavigationItem>
