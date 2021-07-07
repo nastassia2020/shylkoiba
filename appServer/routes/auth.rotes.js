@@ -7,6 +7,7 @@ const bcrypt = require('bcryptjs')
 const router = Router()
 const FileService = require('../services/fileService')
 const File = require('../models/OwnList')
+const middleware = require('../middleware/auth.middleware')
 
 router.post(
     '/register',
@@ -75,6 +76,25 @@ router.post(
         if(!isMatch){
             return res.status(400).json({message: 'Invalid password'})
         }
+
+        const token = jwt.sign(
+            {userId: user.id},
+            config.get('jwtSecret'),
+            {expiresIn: '1h'}
+        )
+
+        res.json({token, userId: user.id})
+
+    } catch (e) {
+        res.status(500).json({message: 'Something went wrong!'})
+    }
+})
+
+router.post(
+    '/auth', middleware,
+    async (req, res) => {
+    try{
+        const user = await User.findOne({id: req.user.id})
 
         const token = jwt.sign(
             {userId: user.id},
