@@ -4,7 +4,6 @@ import './SideDrawer.css';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import Logo from '../../../components/Logo/Logo';
 import Backdrop from '../Backdrop/Backdrop';
-import {connect} from 'react-redux';
 
 const sideDrawer = (props) => {
     let attachedClasses = ['SideDrawer', 'Close']
@@ -16,17 +15,11 @@ const sideDrawer = (props) => {
             <Backdrop show={props.open} clicked={props.closed}/>
             <div className={attachedClasses.join(' ')}>
                 <Logo/>
-                <NavigationItems isAuthenticated={props.isAuthenticated}/>
+                <NavigationItems/>
             </div>
         </div>
     )
 }
 
-function mapStateToProps(state){
-    return {
-        isAuthenticated: !!state.auth.token
-    }
-}
 
-
-export default connect(mapStateToProps)(Radium(sideDrawer))
+export default Radium(sideDrawer)

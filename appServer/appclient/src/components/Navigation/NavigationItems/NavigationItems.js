@@ -17,10 +17,8 @@ function NavigationItems () {
         return(
             <React.Fragment>
                 <ul className='NavigationItems' style={{background: 'white'}}>
-                    <NavigationItem link='/'>MUSIC</NavigationItem>
-                    <NavigationItem link='/videoBox'>VIDEO</NavigationItem>
-                    <NavigationItem link='/ownList'>MY COLLECTION</NavigationItem>
-                    {/* <NavigationItem link='/logout'>LOG OUT</NavigationItem> */}
+                    {/* <NavigationItem link='/'>MUSIC</NavigationItem> */}
+                    <NavigationItem link='/disk'>DISK</NavigationItem>
                     <li><a href='/' onClick={logoutHandler} style={{color: 'black'}}>LOGOUT</a></li>
                 </ul>
             </React.Fragment>
@@ -30,7 +28,6 @@ function NavigationItems () {
             <React.Fragment>
                 <ul className='NavigationItems' style={{background: 'white'}}>
                     <NavigationItem link='/'>MUSIC</NavigationItem>
-                    <NavigationItem link='/videoBox'>VIDEO</NavigationItem>
                     <NavigationItem link='/auth'>LOG IN</NavigationItem>
                 </ul>
             </React.Fragment>

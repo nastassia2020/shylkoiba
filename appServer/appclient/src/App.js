@@ -2,15 +2,10 @@ import React from 'react';
 import Layout from './hoc/Layout/Layout';
 import {Route, Switch, BrowserRouter, Redirect} from 'react-router-dom';
 import MusicBox from './containers/MusicBox/MusicBox';
-import VideoBox from './containers/VideoBox/VideoBox';
-import Songs from './components/Songs/Songs';
-import SongItem from './components/Songs/SongsList/SongItem/SongItem';
-import OwnList from './components/OwnList/OwnList';
 import Auth from './containers/Auth/AuthNode';
-// import {connect} from 'react-redux';
-// import Logout from './components/logout/Logout';
 import {useAuth} from './hooks/auth.hook';
 import { AuthContext } from './context/AuthContext';
+import Disk from './components/Disk/Disk';
 
 function App ()  {
   const {token, login, logout, userId} = useAuth()
@@ -22,17 +17,12 @@ function App ()  {
         <Layout>
           <BrowserRouter>
             <Switch>
-              <Route path='/' exact component={MusicBox}/>
-              <Route path='/videoBox' component={VideoBox}/>
-              <Route path='/musicBox/:id' component={Songs}/>
-              <Route path='/musicBox/' component={SongItem}/>
-              <Route path='/videoBox/:id' component={VideoBox}/>
-              <Route path='/ownList' component={OwnList}/>
-              {/* <Route path='/logout' component={Logout}/> */}
+              {/* <Route path='/' exact component={MusicBox}/> */}
+              <Route path='/'exact component={Disk}/>
               <Redirect to={'/'}/>
             </Switch>
           </BrowserRouter>
-      </Layout>
+        </Layout>
       </AuthContext.Provider>
       )
   } else {
@@ -42,12 +32,8 @@ function App ()  {
           <BrowserRouter>
             <Switch>
               <Route path='/' exact component={MusicBox}/>
-              <Route path='/videoBox' component={VideoBox}/>
               <Route path='/auth' component={Auth}/>
-              <Route path='/musicBox/:id' component={Songs}/>
-              <Route path='/musicBox/' component={SongItem}/>
-              <Route path='/videoBox/:id' component={VideoBox}/>
-              <Redirect to={'/'}/>
+              <Redirect to={'/auth'}/>
             </Switch>
           </BrowserRouter>
         </Layout>
