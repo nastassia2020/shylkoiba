@@ -1,11 +1,11 @@
 import React from 'react';
 import Layout from './hoc/Layout/Layout';
 import {Route, Switch, BrowserRouter, Redirect} from 'react-router-dom';
-import MusicBox from './containers/MusicBox/MusicBox';
 import Auth from './containers/Auth/AuthNode';
 import {useAuth} from './hooks/auth.hook';
 import { AuthContext } from './context/AuthContext';
 import Disk from './components/Disk/Disk';
+import OwnList from './components/OwnList/OwnList';
 
 function App ()  {
   const {token, login, logout, userId} = useAuth()
@@ -31,7 +31,7 @@ function App ()  {
         <Layout>
           <BrowserRouter>
             <Switch>
-              <Route path='/' exact component={MusicBox}/>
+              <Route path='/' exact component={OwnList}/>
               <Route path='/auth' component={Auth}/>
               <Redirect to={'/auth'}/>
             </Switch>

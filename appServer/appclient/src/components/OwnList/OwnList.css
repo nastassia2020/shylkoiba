@@ -1,12 +1,41 @@
 .OwnList{
     display: flex;
     justify-content: center;
+    flex-direction: column;
     flex-grow: 1;
     color: white;
     background: linear-gradient(90deg, #5041b2 0%, #7969e6 100%);
 }
 
 .OwnList p{
-    margin-top: 100px;
     font-size: 30px;
+    margin-left: 50px;
+}
+
+.OwnList form{
+    margin-top: 30px;
+    margin-left: 50px;
+    width: 500px;
+}
+
+.songsList{
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.songItem{
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-left: 2px solid #ccc;
+}
+
+.itemButtons{
+    margin-left: 100px;
+    display: flex;
+}
+
+.itemButtons i{
+    margin: 0 5px;
 }

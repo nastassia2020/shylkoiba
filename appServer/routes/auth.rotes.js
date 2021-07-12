@@ -90,11 +90,11 @@ router.post(
     }
 })
 
-router.post(
+router.get(
     '/auth', middleware,
     async (req, res) => {
     try{
-        const user = await User.findOne({id: req.user.id})
+        const user = await User.findOne({_id: req.user.id})
 
         const token = jwt.sign(
             {userId: user.id},

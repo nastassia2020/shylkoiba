@@ -17,7 +17,7 @@ function NavigationItems () {
         return(
             <React.Fragment>
                 <ul className='NavigationItems' style={{background: 'white'}}>
-                    {/* <NavigationItem link='/'>MUSIC</NavigationItem> */}
+                    <NavigationItem link='/'>MUSIC</NavigationItem>
                     <NavigationItem link='/disk'>DISK</NavigationItem>
                     <li><a href='/' onClick={logoutHandler} style={{color: 'black'}}>LOGOUT</a></li>
                 </ul>
