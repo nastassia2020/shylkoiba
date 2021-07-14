@@ -17,3 +17,14 @@ router.post('/add', async (req, res) => {
         console.log(e)
     }
 })
+
+router.get('/', async (req, res) => {
+    try{
+        const song = await Song.find()
+        res.json(song)
+    } catch(e){
+        console.log(e)
+    }
+})
+
+module.exports = router;

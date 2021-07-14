@@ -4,12 +4,12 @@ const mongoose = require('mongoose')
 const fileUpload = require('express-fileupload')
 const cors = require('cors')
 
+
 const bodyParser = require('body-parser')
-const MongoClient = require('mongodb').MongoClient
 
 const app = express()
 
-// app.use(express.json({extended: true}))
+app.use(express.json({extended: true}))
 app.use(
     cors({
       credentials: true,
@@ -17,7 +17,7 @@ app.use(
       optionsSuccessStatus: 200
     })
   );
-app.use(fileUpload({}))
+app.use(fileUpload())
 app.use('/api/auth', require('./routes/auth.rotes'))
 app.use('/api/files', require('./routes/ownlist.routes'))
 app.use('/api/songs', require('./routes/song.routes'))
@@ -29,7 +29,8 @@ async function start() {
         await mongoose.connect(config.get('mongoUri'), {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            useCreateIndex: true
+            useCreateIndex: true,
+            useFindAndModify: true
         })
         app.listen(PORT, () => console.log(`App has been started on port ${PORT}`))
     } catch(e) {
