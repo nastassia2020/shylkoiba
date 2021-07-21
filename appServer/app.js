@@ -1,7 +1,6 @@
 const express = require('express')
 const config = require('config')
 const mongoose = require('mongoose')
-const fileUpload = require('express-fileupload')
 const cors = require('cors')
 
 
@@ -10,14 +9,8 @@ const bodyParser = require('body-parser')
 const app = express()
 
 app.use(express.json({extended: true}))
-app.use(
-    cors({
-      credentials: true,
-      origin: ["http://localhost:3000"],
-      optionsSuccessStatus: 200
-    })
-  );
-app.use(fileUpload())
+app.use(cors());
+app.use(express.static('public'))
 app.use('/api/auth', require('./routes/auth.rotes'))
 app.use('/api/files', require('./routes/ownlist.routes'))
 app.use('/api/songs', require('./routes/song.routes'))

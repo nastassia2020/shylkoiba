@@ -39,3 +39,13 @@
 .itemButtons i{
     margin: 0 5px;
 }
+
+.progressBar{
+    height: 1rem;
+    width: 0%;
+    background-color: rgb(68, 212, 231);
+    color: white;
+    padding:2px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
