@@ -18,6 +18,13 @@
     width: 500px;
 }
 
+.OwnList textarea{
+    width: 400px;
+    height: 100px;
+    color: #ccc;
+    border: 1px solid #fff;
+}
+
 .songsList{
     margin-top: 30px;
     margin-left: 50px;
@@ -48,4 +55,8 @@
     padding:2px;
     margin-bottom: 5px;
     margin-top: 5px;
+}
+
+.commentBtn{
+    width: 150px;
 }

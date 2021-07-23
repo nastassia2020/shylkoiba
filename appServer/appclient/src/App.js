@@ -6,6 +6,7 @@ import {useAuth} from './hooks/auth.hook';
 import { AuthContext } from './context/AuthContext';
 import Disk from './components/Disk/Disk';
 import OwnList from './components/OwnList/OwnList';
+import ListItem from './components/OwnList/ListItem';
 
 function App ()  {
   const {token, login, logout, userId} = useAuth()
@@ -32,6 +33,7 @@ function App ()  {
           <BrowserRouter>
             <Switch>
               <Route path='/' exact component={OwnList}/>
+              <Route path='/api/songs/:id' render={(props) => <ListItem {...props}/>}/>
               <Route path='/auth' component={Auth}/>
               <Redirect to={'/auth'}/>
             </Switch>

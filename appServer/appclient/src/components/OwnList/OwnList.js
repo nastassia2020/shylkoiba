@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import Radium from 'radium';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import './OwnList.css';
 
 function OwnList (){
@@ -14,16 +15,16 @@ function OwnList (){
         setFile(e.target.files[0])
     }
 
-    const getSong = () => {
-        axios
+    const getSong = async () => {
+        await axios
         .get('/api/songs')
         .then((response) => setSongs(response.data))
         .catch((e) => console.log(e))
     }
 
-    // useEffect(() => {
-    //     getSong()
-    // }, [getSong])
+    useEffect(() => {
+        getSong()
+    })
 
     const addSong = useCallback(
         async (e) => {
@@ -83,7 +84,9 @@ function OwnList (){
                     songs.map((song, index) => {
                         return (
                             <div className='songItem' key={index}>
-                                <div>{song.singer} - {song.name}</div>
+                                <Link to={{pathname: `/api/songs/${song._id}`}}>
+                                    <div>{song.singer} - {song.name}</div>
+                                </Link>
                                 {song.path && <audio controls><source src={song.path}/></audio>}
                                 <div className='itemButtons'>
                                     <i className='material-icons blue-text'>add</i>
