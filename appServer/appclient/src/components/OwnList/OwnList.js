@@ -15,6 +15,12 @@ function OwnList (){
         setFile(e.target.files[0])
     }
 
+    const onSubmit = e => {
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append('path', file)
+    }
+
     const getSong = async () => {
         await axios
         .get('/api/songs')
@@ -26,31 +32,48 @@ function OwnList (){
         getSong()
     })
 
-    const addSong = useCallback(
-        async (e) => {
-            e.preventDefault()
-            const formData = new FormData()
-            formData.append('name', name)
-            formData.append('singer', singer)
-            formData.append('path', file)
-    
-            if(!name && !singer && !file) return null
-    
-            await axios
-            .post('/api/songs/add', formData)
-            .then((response) => {
-                setSongs([...songs], response.data)
-                setName('')
-                setSinger('')
-                getSong()
-            })
-            .catch((e) => console.log(e))
+    const addSong = () => {
+        const songsList = {
+            name,
+            singer,
+            path: file
         }
-    )
+
+        setName('')
+        setSinger('')
+
+        axios.post('/api/songs', songsList)
+        .then((response) => {
+            setSongs(response.data)
+        })
+        .catch((e) => console.log(e))
+    }
+
+    // const addSong = useCallback(
+    //     async (e) => {
+    //         e.preventDefault()
+    //         const formData = new FormData()
+    //         formData.append('name', name)
+    //         formData.append('singer', singer)
+    //         formData.append('path', file)
+    
+    //         if(!name && !singer && !file) return null
+    
+    //         await axios
+    //         .post('/api/songs', formData)
+    //         .then((response) => {
+    //             setSongs([...songs], response.data)
+    //             setName('')
+    //             setSinger('')
+    //             getSong()
+    //         })
+    //         .catch((e) => console.log(e))
+    //     }
+    // )
 
     const removeSong = useCallback(async (id) => {
         try{
-            await axios.delete(`/api/songs/delete/${id}`, {id}, {
+            await axios.delete(`/api/songs/${id}`, {id}, {
                 headers: {'content-type': 'application/json'}
             })
             .then(() => getSong())
@@ -70,7 +93,7 @@ function OwnList (){
     return(
         <div className='OwnList'>
             <p>Add your file to playlist</p>
-            <form encType='multipart/form-data'>
+            <form encType='multipart/form-data' onSubmit={onSubmit}>
                 <label htmlFor='name'>Name of song</label>
                 <input type='text' name='name' value={name} placeholder='Name' onChange={nameChangeHandler}></input>
                 <label htmlFor='singer'>Name of singer</label>

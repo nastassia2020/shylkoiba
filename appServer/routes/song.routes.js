@@ -2,6 +2,7 @@ const {Router} = require('express')
 const router = Router()
 const multer = require('multer')
 const Song = require('../models/Song')
+const Comment = require('../models/Comment')
 const fs = require('fs')
 
 const storage = multer.diskStorage({
@@ -15,27 +16,40 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage})
 
-router.post('/add', upload.single('path'), async (req, res) => {
+router.post('/', upload.single('path'), async (req, res) => {
     const song = await new Song({
         name: req.body.name,
         singer: req.body.singer,
         path: req.file.originalname,
+        comments: [],
         clicks: 0,
         likes: 0
     })
         song
         .save()
         .then(() => res.json(song))
-        .catch(e => console.log(e))
+        .catch(e => res.status(400).json(`Error: ${e}`))
     }
 )
+
+router.post('/:id/comments', async (req, res) => {
+    try{
+        const song = await Song.findById({_id: req.params.id})
+        const newComment = song.comments.create(req.body)
+        song.comments.push(newComment)
+        await song.save()
+        res.json(newComment)
+    } catch(e) {
+        res.status(400).json(`Error: ${e}`)
+    }
+})
 
 router.get('/', async (req, res) => {
     try{
         const song = await Song.find()
         res.json(song)
     } catch(e) {
-        console.log(e)
+        res.status(400).json(`Error: ${e}`)
     }
 })
 
@@ -48,7 +62,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-router.delete('/delete/:id', async(req, res) => {
+router.delete('/:id', async(req, res) => {
     try{
         const song = await Song.findOneAndDelete({_id: req.params.id})
         res.json(song)
