@@ -1,0 +1,23 @@
+{
+  "name": "shylkoiba",
+  "version": "1.0.0",
+  "description": "my node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nastassia2020/shylkoiba.git"
+  },
+  "author": "Nastassia Shylko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nastassia2020/shylkoiba/issues"
+  },
+  "homepage": "https://github.com/nastassia2020/shylkoiba#readme",
+  "dependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
