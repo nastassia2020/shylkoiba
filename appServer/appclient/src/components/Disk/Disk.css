@@ -1,8 +1,0 @@
-.Disk{
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
-    color: white;
-    background: linear-gradient(90deg, #5041b2 0%, #7969e6 100%);
-    margin-top: 50px;
-}
